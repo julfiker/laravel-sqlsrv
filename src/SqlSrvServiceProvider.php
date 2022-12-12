@@ -1,7 +1,7 @@
 <?php
 namespace Julfiker\SqlSrv;
 
-use App\Connection\SqlServerConnection;
+use Julfiker\SqlSrv\Connection\SqlServerConnection;
 use Illuminate\Database\Connection;
 use Illuminate\Support\ServiceProvider;
 
