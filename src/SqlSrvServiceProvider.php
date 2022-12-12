@@ -1,6 +1,8 @@
 <?php
 namespace Julfiker\SqlSrv;
 
+use App\Connection\SqlServerConnection;
+use Illuminate\Database\Connection;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -12,21 +14,47 @@ use Illuminate\Support\ServiceProvider;
  */
 class SqlSrvServiceProvider extends ServiceProvider
 {
+
     /**
-     * Bootstrap the application services.
+     * Indicates if loading of the provider is deferred.
      *
-     * @return void
+     * @var bool
+     */
+    protected $defer = false;
+
+    /**
+     * Boot Oci8 Provider.
      */
     public function boot()
     {
     }
 
     /**
-     * Register the application services.
+     * Register the service provider.
      *
      * @return void
      */
     public function register()
     {
+
+        Connection::resolverFor('sqlsrv', function ($connection, $database, $prefix, $config) {
+            $db = new SqlServerConnection($connection, $database, $prefix, $config);
+
+            if (! empty($config['skip_session_vars'])) {
+                return $db;
+            }
+
+            return $db;
+        });
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return string[]
+     */
+    public function provides()
+    {
+        return [];
     }
 }
