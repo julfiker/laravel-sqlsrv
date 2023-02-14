@@ -11,7 +11,7 @@ The Microsoft drivers is required to enable SQL server for PHP applications
 Configure the service into the applicaton, Please add following into the config/app.php under the providers  
 `Julfiker\SqlSrv\SqlSrvServiceProvider::class`
 
-###Instruction to use into the laravel application to execute and procedure
+### Instruction to use into the laravel application to execute and procedure
 ````php
 
        $status_code = sprintf("%4000s", "");
@@ -35,7 +35,7 @@ Also you can define parameter type and length in parameter like
 
 ````php
      $params = [
-            "p_user_id" => ['value' => 1, 'length' => 400],'type' => PDO::PARAM_INPUT_OUTPUT] //OUTPUT parameter
+            "p_user_id" => ['value' => 1, 'length' => 400,'type' => PDO::PARAM_INPUT_OUTPUT] //OUTPUT parameter
      ];
      
      //Note: If you want to assign base64 content with the procedure param then you can keep null into the type and length, otherwise you might got error.
