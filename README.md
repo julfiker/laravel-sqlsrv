@@ -1,6 +1,6 @@
 # laravel-sqlsrv
-Before install make sure install sqlsrv and pdo_sqlsrv for php
-SQLSRV DB driver for Laravel
+Before install make sure install sqlsrv and pdo_sqlsrv for php   
+SQLSRV DB driver for Laravel   
 The Microsoft drivers is required to enable SQL server for PHP applications
 
 **Install package by composer:**
