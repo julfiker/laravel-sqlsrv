@@ -11,7 +11,7 @@ The Microsoft drivers is required to enable SQL server for PHP applications
 Configure the service into the applicaton, Please add following into the config/app.php under the providers  
 `Julfiker\SqlSrv\SqlSrvServiceProvider::class`
 
-### Instruction to use into the laravel application to execute and procedure
+### Instruction to use into the laravel application to execute a procedure
 ````php
 
        $status_code = sprintf("%4000s", "");
