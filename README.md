@@ -9,7 +9,7 @@ The Microsoft drivers is required to enable SQL server for PHP applications
 ````
 **Post install:**  
 Configure the service into the applicaton, Please add following into the config/app.php under the providers  
-`Julfiker\Swagger\SwaggerServiceProvider::class`
+`Julfiker\SqlSrv\SqlSrvServiceProvider::class`
 
 ###Instruction to use into the laravel application to execute and procedure
 ````php
