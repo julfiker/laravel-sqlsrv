@@ -42,7 +42,7 @@ Also you can define parameter type and length in parameter like
 ````
 
 #####Any Help?
-You can contact me through following access  
+You can contact me through following access   
 email: _mail.julfiker@gmail.com_  
 skype: _eng.jewel_
 
