@@ -99,9 +99,26 @@ class SqlServerConnection extends Connection
      */
     public function executeProcedure($procedureName, array $bindings = [])
     {
+        //log set
+        $logId = date('YmdHi-').Uuid::uuid4();
+        Log::channel('auditLog')->debug($logId, [
+            'MODEL_NAME'=>'',
+            'PROCE_NAME'=>$procedureName,
+            'PARAMS_DATA'=>json_encode($bindings),
+            'CREATED_AT'=> date("Y-m-d H:i:s")
+        ]);
+
         $stmt = $this->createStatementFromProcedure($procedureName, $bindings);
         $stmt = $this->addBindingsToStatement($stmt, $bindings);
         $stmt->execute();
+
+        //log set
+        Log::channel('auditLog')->debug($logId, [
+            'PROCE_NAME'=>$procedureName,
+            'RESPONSE_DATA'=>json_encode($bindings),
+            'UPDATED_AT'=> date("Y-m-d H:i:s")
+        ]);
+
         return $stmt;
     }
 
