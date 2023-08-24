@@ -41,6 +41,37 @@ Also you can define parameter type and length in parameter like
      //Note: If you want to assign base64 content with the procedure param then you can keep null into the type and length, otherwise you might got error.
 ````
 
+### Instructions to set log into the database.
+- Crate a table in database 
+```
+create table ACCESS_LOG
+            (
+                ACTION_NAME   nvarchar(max),
+                MODEL_NAME    nvarchar(max),
+                PROCE_NAME    nvarchar(max),
+                PARAMS_DATA   nvarchar(max),
+                RESPONSE_DATA nvarchar(max),
+                CREATED_AT    datetime,
+                UPDATED_AT    datetime,
+                CREATED_BY    bigint,
+                UPDATED_BY    bigint,
+                ROW_ID        varchar(max)
+            ) 
+```
+
+- Add channel on  \config\logging.php at line 37 to 43
+```
+  'channels' => [
+         'auditLog' => [
+             'driver' => 'custom',
+             'handler' => App\AuditLog\LogHandler::class,
+             'via' => App\AuditLog\LogSetter::class,
+             'level' => 'debug',
+         ],
+```
+
+- Copy the directory 'AuditLog' to \app as the path \app\AuditLog
+
 ### Any Help?   
 You can contact me through following access   
 email: _mail.julfiker@gmail.com_  
